@@ -1,0 +1,8 @@
+{
+  "name": "ap5pm",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "1beb6a07"
+}
