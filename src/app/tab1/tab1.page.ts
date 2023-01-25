@@ -92,13 +92,12 @@ initPlaylists() {
   });
 
   }
-
-async load(data : AlbumDetails){
+  load(data : AlbumDetails){
     this.settingsService.detail = data;
   }
 
-ngOnInit() {
-    console.log(this.apiService.token);
+  loadData(){
     this.initPlaylists();
-}
+  }
+
 }

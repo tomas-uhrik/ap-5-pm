@@ -12,6 +12,7 @@ export class SettingsPage implements OnInit {
 
   options: Option[] = [];
 
+
   form!: FormGroup;
 
 
@@ -23,7 +24,7 @@ export class SettingsPage implements OnInit {
   }
 
   async dismiss() {
-    // dismiss modal
+
     await this.modalCtrl.dismiss();
   }
 

@@ -9,9 +9,9 @@ import {Observable} from "rxjs";
 import {Albums, Artists, Releases} from "../../models/playlists.model";
 
 export interface authResponse{
-  access_token:any,
-  expires_in:any,
-  token_type:any,
+  access_token:string,
+  expires_in:number,
+  token_type:string,
 }
 
 
@@ -20,9 +20,7 @@ export interface authResponse{
 })
 export class ApiService {
 
-
-  // @ts-ignore
-  token: string;
+  token : string | undefined;
 
   constructor(
     private http: HttpClient,
@@ -37,14 +35,16 @@ export class ApiService {
 
 
   async init(){
-    if(!this.token){
-      await this.setToken();
+
+    if (!this.token) {
+     await this.setToken();
     }
+
   }
 
   setToken(){
-    this.getAccessToken().subscribe( data =>{
-        this.token = data.access_token;
+    this.getAccessToken().subscribe( async data =>{
+      this.token = data.access_token;
       })
   }
 
@@ -102,11 +102,11 @@ export class ApiService {
   }
 
   getAlbumTracks(id : any){
-
+    let access_token = this.storageService.getData('access_token');
     let url = "https://api.spotify.com/v1/albums/"+id+"/tracks"
     return this.http.get(url, {
       headers: new HttpHeaders({
-        Authorization: 'Bearer '+this.token,
+        Authorization: 'Bearer '+access_token,
         'Content-Type': 'application/json',
       }),
       responseType:"json",
