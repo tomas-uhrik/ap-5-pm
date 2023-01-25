@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "ap5pm",
-	"webDir": "www",
-	"bundledWebRuntime": false
+  "appId": "io.ionic.starter",
+  "appName": "SpotifyApp",
+  "webDir": "www",
+  "bundledWebRuntime": false
 }

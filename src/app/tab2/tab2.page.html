@@ -1,17 +1,26 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Search
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-searchbar (ionChange)="search($event)" animated="true" show-cancel-button="focus"  placeholder="Search"></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let item of search_data?.tracks?.items" lines="none">
+      <ion-thumbnail>
+        <img [src]="item?.album?.images[0]?.url">
+      </ion-thumbnail>
+
+      <ion-label>{{ item?.name }}
+        <p *ngFor="let artist of item?.artists">{{ item?.type }} * {{artist.name}}</p>
+      </ion-label>
+      <ion-icon slot="end" size="small" name="ellipsis-vertical" color="white"></ion-icon>
+    </ion-item>
+  </ion-list>
+
 </ion-content>

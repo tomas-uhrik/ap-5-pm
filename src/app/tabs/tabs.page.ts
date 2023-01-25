@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+
+import {ApiService} from "../services/api/api.service";
+import {StorageService} from "../services/storage/storage.service";
+import {Router, RouterModule} from "@angular/router";
 
 @Component({
   selector: 'app-tabs',
@@ -6,7 +10,12 @@ import { Component } from '@angular/core';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
+  loggedIn = false;
+  constructor(private apiService: ApiService,private storageService:StorageService, private router:Router) {
 
-  constructor() {}
+  }
 
+  ngOnInit(){
+
+  }
 }

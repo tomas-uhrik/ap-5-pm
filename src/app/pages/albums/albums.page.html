@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="white" defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">{{ album.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scrollEvents="true"  [fullscreen]="true" [appImageFade]="cover" *ngIf="album">
+
+
+  <div class="ion-text-center image-box" #cover>
+    <img [src]="album.images[0].url">
+  </div>
+
+
+  <div class="main">
+
+
+    <ion-row>
+      <ion-col size="12" class="album-info">
+
+        <span>Album {{ album.name }} · {{ album.release_date }}</span>
+      </ion-col>
+      <ion-col size="8" class="ion-text-left ion-no-padding">
+        <ion-button fill="clear" class="ion-no-margin">
+          <ion-icon name="heart-outline" color="light" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear">
+          <ion-icon name="arrow-down-circle-outline" color="light" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear">
+          <ion-icon name="ellipsis-horizontal" color="light" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="4" class="ion-text-right ion-no-padding">
+        <ion-button fill="clear">
+          <ion-icon name="play-circle" size="large" color="success" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-list>
+      <ion-item *ngFor="let item of album.tracks!.items!" lines="none">
+        <ion-label>{{ item.name }}
+          <p *ngFor="let artists of item.artists ">{{ artists.name }}</p>
+        </ion-label>
+        <ion-icon slot="end" size="small" name="ellipsis-horizontal" color="white"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>
